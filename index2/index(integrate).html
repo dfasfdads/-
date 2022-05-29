@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目背景</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            border-radius: 10%;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #cbcbcb;
+            border-top: none;
+            padding: 10px;
+            margin-bottom: 50px;
+            background-image: url(../img/bj1.jpg);
+            color: #fff;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+        }
+
+        .header h1 {
+
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            font-family: "微软雅黑";
+            /* 定义父元素 然后使子元素水平垂直居中 
+            box-align 和 flex-align属性加的前赘，因为浏览器内核和协议规则不同一般是用来适配老版浏览器
+*/
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            border-bottom: 1px;
+            border-bottom-color: yellow;
+            border-bottom-style: solid;
+            padding: 5px 0;
+
+        }
+
+        .header h1 span {
+            display: inline-block;
+            width: 100px;
+            height: 2px;
+            background-color: #cbcbcb;
+            margin-left: 20px;
+        }
+
+        .header p {
+            font-weight: 400;
+            text-indent: 2em;
+            padding: 5px 0;
+
+        }
+
+        .content {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            /* 在弹性盒子对象周围留空白 */
+            min-height: 600px;
+            /* 块元素若高度小于600px则不会自动变小反之不受限制 */
+            border-width: 1px;
+            border-color: #cbcbcb;
+            border-style: solid;
+        }
+
+        /* :after 伪元素在元素之后添加内容。 */
+        .content .content_cn::after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            background-image: url("../img/bj2.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            opacity: 0.8;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .content .content_cn {
+            position: relative;
+            /* 相对定位 */
+            -webkit-box-flex: 9;
+            -ms-flex: 9;
+            flex: 9;
+            height: 750px;
+        }
+
+        .content .content_cn .list1 {
+            /* 页中部分元素可滚动 */
+            padding: 10px;
+            z-index: 999;
+            height: 750px;
+            overflow-y: scroll;
+            display: none;
+        }
+
+        .content .content_cn .act {
+            display: block;
+        }
+
+        .content .content_cn h3 {
+            margin: 5px;
+            color: #fff;
+        }
+
+        .content .content_cn p {
+            text-indent: 2em;
+            line-height: 26px;
+            color: #d7d7d7;
+            margin-bottom: 30px;
+        }
+
+        .content .content_btn_group {
+            /* 对总长度进行按比例分割 */
+            -webkit-box-flex: 3;
+            -ms-flex: 3;
+            flex: 3;
+            border-left: 1px;
+            border-color: #cbcbcb;
+            border-style: solid;
+            padding: 10px;
+        }
+
+        .content .content_btn_group ul {
+            margin-top: 50px;
+        }
+
+        .content .content_btn_group ul .act button {
+            background-color: #ff3a3a;
+            color: #fff;
+        }
+
+        .content .content_btn_group ul li {
+            width: 100%;
+            height: 45px;
+            margin-bottom: 10px;
+        }
+
+        .content .content_btn_group ul li button {
+            width: 100%;
+            height: 45px;
+            border: none;
+            background-color: #ff9090;
+            color: #fff;
+            font-size: 18px;
+            /* 鼠标经过或点击有小手图标 */
+            cursor: pointer;
+        }
+
+        .content .content_btn_group ul li button:hover {
+            background-color: #fa6262;
+        }
+
+        .content .content_btn_group .content_zc {
+            border-top: 1px;
+            border-top-color: #cbcbcb;
+            border-top-style: solid;
+            margin-top: 50px;
+            padding: 10px 0;
+        }
+
+        .content .content_btn_group .content_zc p {
+            text-indent: 2rem;
+            line-height: 26px;
+        }
+
+        .content .content_btn_group .audio {
+            /* 设置“点此开始学习”按钮的格式 */
+            display: block;
+            width: 100%;
+            height: 35px;
+            color: #f00;
+            text-decoration: underline;
+            text-align: center;
+            line-height: 35px;
+            margin-top: 30px;
+        }
+
+        #audio {
+            /* 设置视频所在盒子格式 */
+            border: 1px solid #cbcbcb;
+            padding: 20px;
+            margin-top: 40px;
+            background-image: url("../img/bj4.jpg");
+            background-size: 100% 100%;
+        }
+
+        #audio video {
+            margin: 20px 30px;
+        }
+
+        .footer {
+            border: 1px;
+            border-top-color: #cbcbcb;
+            border-top-style: solid;
+            border-top: none;
+        }
+
+        .footer p {
+            text-indent: 2rem;
+            line-height: 26px;
+            padding: 10px;
+        }
+
+        /*# sourceMappingURL=index.css.map */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>时和岁稔，思政扶贫 <span></span>用精神食粮填满每个人的内心 </h1>
+            <hr>
+            <!-- 插入素材1（现状） -->
+            <p>
+                说在前头：不发达地域“闭塞”的思想和经济对思政教育的限制
+                由于欠发达地区地方党委政府和学校领导不够重视小学思政课教学，导致师资力量配备不足。
+                小学思政课教师岗位招聘少待遇低，对思政专业的招聘不限专业，又招倾向语数外、音体美、信息技术等专业，导致专业度不够，所掌握的知识也不足。
+                对于开设的课程也只是教学任务，达不到专业系统学习，做不到真正的教学，所形成的氛围导致学生也对此的认识模糊与不重视。
+                部分小学思政课教师思想政治素质和教育教学能力低，没有足够的政治意识，对待教育工作，作为生活手段，没有总够的精力与学识投入思政教育研究，也有甚者，跟不上时代的发展，新一阶段的政治思想知识都不能及时学习到位，没有专业知识素养。对于老师的培训条件也有限。
+                师范类高校思政专业招生长期遭遇冷门，对于偏远地区的任教具有一定难度。
+            </p>
+        </div>
+        <div class="content">
+            <div class="content_cn">
+                <!-- 插入素材并实现点击右侧按键切换左边对应素材功能 -->
+                <div class="list1 act">
+                    <!-- 插入素材2(需求度) -->
+                    <h3>
+                        (一）、高校立身之本在于立德树人
+                    </h3>
+                    <p>
+                        思想政治教育帮助学生从自然人成长为社会人，进而在生命、心理、伦理、审美等维度上成为自由全面发展的人。
+                        思想政治教育的作用在于学生需要有自己的领悟，在头脑中建构属于自己的知识框架，真正成为自己所学到的知识。重要的是在帮助学生选择和形成自己的观点。通过体验这个过程，学生掌握如何获取知识的能力，如何处理各种信息的能力。
+                        学生的思想政治状况、道德品质、科学文化素养和健康素质情况，直接与未来中华民族的素质相关。
+                        思政教育不仅可以使令学生的思想作出改变，还可以提高学生个人素质，让学生对社会的有多方面的见解，更是要让学生知道国家的政治思想，跟紧时代的步伐、与社会的发展、与国家的富强同步。最重要的是让学生们知道怎样去适应这个社会，如何去了解他人，懂得换位思考和完善自我，不断的学习改善自己短处增进自己的长处。
+                        使学生拥有自我独立意识和独立的人格，能够稳定情绪去解决事情，还能得到受益的经验。
+                        告诉学生国家实施的措施和颁布的政策方针，使我们自觉遵守，共同去维护。培养学生发掘自我潜能和拥有思索探究的能力。
+                    </p>
+                    <h3>
+                        （二）、新时代社会的建立需要更高要求
+                    </h3>
+                    <p>
+                        思想政治教育工作具有引领社会主流价值、疏导社会心理、规范社会行为、协调社会关系、维护社会稳定、批判错误思潮等功能。
+                        在社会治理过程中加强思想政治教育工作，有助于培育人民群众正确的世界观、人生观和价值观，增强社会凝聚力和包容性。
+                        在如今信息社会，各种思想浪潮相互充斥，最需要网络的绿色发展，提供好的平台去传播正确思想，建立正确领导，发展良好的社会氛围。
+                        随着社会建设进程的加快，人们渴望“更有序、更安全、更和谐”。这对新时代的社会治理提出了更高要求。身处疫情环境，最美"逆行者"的出现，各种公益基金会的出现，各种公益机构的创建的出现，还有极具教育意义的实践活动的出现，都是得益于当今社会所营造的正确思政观念的氛围。
+                        像德国创造的"第一张可以刷卡的海报"的公益活动的设计与应用，就很好的运用本国的社会经济政策去发展的公益活动，让善良友爱，力所能及去帮助的教育观渗透到人们的方方面面，这更加说明我们不能局限于校园阶段的学习，还有在社会上的思政教育学习。
+                        在这么恰到好处的思政教育先例在前，我们也可以在互联网时代，在我们国家的网络信息技术发展这么迅速发达的阶段，去建立网络化思政教育。
+                    </p>
+                </div>
+                <div class="list1">
+                    <!-- 插入素材6(不发达地区思政教育现状) -->
+
+                    <p>
+                        教师主张单纯地育人与规范人的思政教育，采用填鸭式思政教育方式，严重忽视了学生的主体性，导致学生只能根据教师设定学习要求固定思维式学习，大大降低了思政教育的针对性与有效性。
+                        所以思政教育的对象需要放在学生角度，需要改变思政教育课的教育方式模式。高校与教师对网络思政的重视不足，在移动互联网迅速发展大时代环境，网络在生活的方方面面必不可少，尤其现在九零后、零零后对网络依赖更甚。
+                        当前，网络思政教育已经不可避免成为高校培养学生的重要方法，但由于部分教师还没有认识到网络对思政教育的帮助，仍用旧式教学方式，导致思政教育的教学效果和教学质量达不到好的效果。所以，思政课与网络的结合是不可避免的，同时它也是一种很好的辅助工具。让学生在网络中不只进行人际交往，抒发情感，更可以在上面学习思政课教育，提升自己的思想。协同育人是培养学生理论基础和实践技能两方面能力。
+                        但在高校与企业合作或自发组织时间活动等形式中存在多样化的繁杂，在参与社会实践的学生人数与实际参与实践人数存在差距，不能保证每一位学生的实践需要，再到教学评估和实践评阶段也存在欠缺。
+                    </p>
+
+                </div>
+                <div class="list1">
+                    <!-- 插入素材3(国家政策) -->
+                    <h3>
+                        （一）在新时代高校思政工作持续加强实践、发展创新。
+                    </h3>
+                    <p>
+                        深入推进党的创新理论的学习，不仅学在脑中也要学入心中。学习宣传党的二十大精神，学习贯彻习近平新时代中国特色社会主义思想。
+                        围绕迎接党的二十大，动用专家学者为师生提供问答和解读，帮助进一步的理解与学习。
+                        在党的二十大召开后，领导高校迅速建立“领学、研学、联学、互学”的立体式学习。
+                        构建新百年新征程落实立德树人任务新格局。搭建各类具有引领功能的平台基地，为高校提供优质的学习资源和进行思政教育实践的载体。把各项政策和举措精准落实到办学治校、教育教学、人才培养的方方面面。建立优强并存的思政骨干队伍。对没有达标的地方和高校，督促他们落实到位政策的要求与规划部署。
+                        最主要的地方是思政工作队伍能力的提升，要制定计划、创建平台，有效扶持和有意义的奖励，保障高校党建工作和思政工作队伍建优建强。四是运用创新思维促进高校思政工作达到高质量发展和高效率工作。扩大一站式学生社区综合管理模式范围。把大数据技术运用到思政工作当中，运用大数据分析工作，利用资助学生的政策、心理健康教育类的沟通活动、学业辅导类的学习活动等工作形式，帮助思政教育的更好的实施。由此可见，多方面的改革精进，需要一个传播平台，而身处新时代、互联网时代，数据平台的建立是最优选择。
+                    </p>
+                    <h3>
+                        （二）多种方式政策助力思政教育发展
+                    </h3>
+                    <p>
+                        为思政教育加点“乐感”。习近平总书记在中国文联十一大、中国作协十大开幕式上的重要讲话中指出，文化是民族的精神命脉，文艺是时代的号角。中国共产党革命音乐是文艺中的经典，把革命历史、时代风貌、革命精神用音乐的形式展示，这为中国共产党领导中国人民浴血奋战夺取革命胜利提供精神力量，是中国革命文化的重要组成部分。
+                        将中国共产党革命音乐融入大学生思想政治教育、融入课程思政实践、融入校园文化，可以让大学生在中国共产党革命音乐中汲取奋进力量，提升“四史”学习效果。发挥好红色资源的思政教育作用习近平总书记在《求是》杂志发表重要文章《用好红色资源、赓续红色血脉，努力创造无愧于历史和人民的新业绩》指出，红色资源见证了我们党艰辛奋斗、辉煌奋斗的历程，是最宝贵的精神财富。从高校思想政治教育视角来看，红色资源与思政课的思想内容高度契合、具有积极的价值导意义。因此，高校应善于运用本地红色资源进行思想政治教育，把理论性学习和实践性活动相结合。
+                        构建高校“思政教育+社会工作”新模式党的十八大以来，党中央高度重视从多方面不断推进高校思想政治教育的改革。面对社会压力、家庭压力、经济压力、就业压力、学习压力等多方面的心理压力，大学生很容易引起思想认识方面的消极影响。由于高校学生出现的心理问题导致意外事故的发生不在少数，这反复警示我们：关注当代大学生心理状况和心理自我调适能力是非常重要的。在此背景下，未来的高校思想政治教育，应该重视并尝试引入学校社会工作视角，构建高校“思想政治教育+社会工作”新模式。
+                        而现处于大数据时代的学生，最贴近他们的便是网络，让他们快速获取思想的调节是由网络提供，所以运送网络技术对思政教育发展帮助良多。
+                    </p>
+                </div>
+            </div>
+            <!-- 插入右侧按钮 -->
+            <div class="content_btn_group">
+                <ul>
+                    <li class="act btn">
+                        <button>地区思政教育现状</button>
+                    </li>
+                    <li class="btn">
+                        <button>不发达地区思政教育需求</button>
+                    </li>
+                    <li class="btn">
+                        <button>国家政策</button>
+                    </li>
+                </ul>
+                <a href="#audio" class="audio">点此开始学习</a>
+                <div class="content_zc">
+                    <!-- 插入素材4(习近平书记说话) -->
+                    <h3>习近平说话：</h3>
+                    <p>
+                        习近平总书记强调：“要运用新媒体新技术使工作灵活有效起来，把思想政治工作传统优势和信息技术尽可能的完美融合，顺应新时代和提高吸引力。
+                        不仅因材施教也要因时施教，让新媒体作为思政教育的新工具新探索。”
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="audio">
+            <!-- 插入视频（mp4格式） -->
+            <video width="320" height="240" controls>
+                <source src="../video/sp1_batch.mp4" type="video/mp4">
+                您的浏览器不支持Video标签。
+            </video>
+            <video width="320" height="240" controls>
+                <source src="../video/sp2_batch.mp4" type="video/mp4">
+                您的浏览器不支持Video标签。
+            </video>
+            <video width="320" height="240" controls>
+                <source src="../video/sp3_batch.mp4" type="video/mp4">
+                您的浏览器不支持Video标签。
+            </video>
+            <video width="320" height="240" controls>
+                <source src="../video/sp4_batch.mp4" type="video/mp4">
+                您的浏览器不支持Video标签。
+            </video>
+            <video width="320" height="240" controls>
+                <source src="../video/sp5_batch.mp4" type="video/mp4">
+                您的浏览器不支持Video标签。
+            </video>
+            <video width="320" height="240" controls>
+                <source src="../video/sp6_batch.mp4" type="video/mp4">
+                您的浏览器不支持Video标签。
+            </video>
+            <video width="320" height="240" controls>
+                <source src="../video/sp7_batch.mp4" type="video/mp4">
+                您的浏览器不支持Video标签。
+            </video>
+            <video width="320" height="240" controls>
+                <source src="../video/sp8_batch.mp4" type="video/mp4">
+                您的浏览器不支持Video标签。
+            </video>
+            <div class="footer">
+                <!-- 插入素材5(结尾) -->
+                <p> 处于大数据时代，从文字阅读到视频快速传达，人们都用便利短时间的方式去获取信息。网络文化、新科技产品都体现便利与快捷，可以采取面对动漫、网络视频、弹幕等这些变化和需求，对思政教育方式进行改变与进一步发展。“互联网+”开创思政教育新路径。近年来，“互联网+”时代的到来，挖掘“互联网+”的教育潜能是新时代思想政治教育工作者必须面对的重要课题。
+                </p>
+            </div>
+        </div>
+        <!-- 获取.btn和.sucai这两个类的dom 节点然后绑定了一个点击事件动态修改内容或样式 -->
+        <script>
+            var btnArr = document.querySelectorAll('.btn');
+            var listArr = document.querySelectorAll('.list1');
+            btnArr.forEach((element, index) => {
+                element.onclick = function () {
+                    btnArr.forEach((el, id) => {
+                        el.classList.remove('act');
+                        listArr[id].classList.remove('act');
+                    });
+                    console.log(listArr[index])
+                    listArr[index].classList.add('act');
+                    element.classList.add('act');
+                }
+            });
+        </script>
+</body>
+
+</html>
